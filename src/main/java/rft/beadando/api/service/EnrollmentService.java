@@ -2,13 +2,12 @@ package rft.beadando.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rft.beadando.api.Repository.EnrollmentRepository;
+import rft.beadando.api.repository.EnrollmentRepository;
 import rft.beadando.api.model.Enrollment;
 
 
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EnrollmentService {

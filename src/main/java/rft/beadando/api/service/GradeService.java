@@ -2,7 +2,7 @@ package rft.beadando.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rft.beadando.api.Repository.GradeRepository;
+import rft.beadando.api.repository.GradeRepository;
 import rft.beadando.api.model.Grade;
 import rft.beadando.api.model.GradeId;
 

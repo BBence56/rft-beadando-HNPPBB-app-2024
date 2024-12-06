@@ -25,7 +25,7 @@ public class GradeController {
         return gradeService.findAllGrades();
     }
 
-    @GetMapping
+    @GetMapping("/{studentId}/{courseId}")
     public Optional<Grade> getGradeById(@RequestParam Long studentId, @RequestParam Long courseId) {
         return gradeService.findGradeById(studentId, courseId);
     }

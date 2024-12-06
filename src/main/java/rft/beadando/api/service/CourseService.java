@@ -2,7 +2,7 @@ package rft.beadando.api.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import rft.beadando.api.Repository.CourseRepository;
+import rft.beadando.api.repository.CourseRepository;
 import rft.beadando.api.model.Course;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package rft.beadando.api.Repository;
+package rft.beadando.api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import rft.beadando.api.model.Student;
