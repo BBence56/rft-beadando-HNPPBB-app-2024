@@ -2,7 +2,6 @@ package rft.beadando.grade;
 
 
 import jakarta.persistence.*;
-import java.io.Serializable;
 import rft.beadando.course.Course;
 import rft.beadando.student.Student;
 
