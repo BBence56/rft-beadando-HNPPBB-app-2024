@@ -2,8 +2,8 @@ package rft.beadando.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import rft.beadando.enrollment.Enrollment;
-import rft.beadando.enrollment.EnrollmentService;
+import rft.beadando.api.model.Enrollment;
+import rft.beadando.api.service.EnrollmentService;
 
 import java.util.List;
 

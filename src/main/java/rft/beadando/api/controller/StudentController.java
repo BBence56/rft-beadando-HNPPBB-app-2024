@@ -2,8 +2,9 @@ package rft.beadando.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import rft.beadando.student.Student;
-import rft.beadando.student.StudentService;
+import rft.beadando.api.model.Student;
+import rft.beadando.api.service.StudentService;
+
 
 import java.util.List;
 import java.util.Optional;
