@@ -1,6 +1,7 @@
-package rft.beadando.teacher;
+package rft.beadando.api.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import rft.beadando.api.model.Teacher;
 
 public interface TeacherRepository extends JpaRepository<Teacher, Integer> {
     Teacher findTeacherById(int id);

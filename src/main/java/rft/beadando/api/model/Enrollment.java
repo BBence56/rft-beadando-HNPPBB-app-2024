@@ -1,10 +1,8 @@
-package rft.beadando.enrollment;
+package rft.beadando.api.model;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
-import rft.beadando.course.Course;
-import rft.beadando.student.Student;
 
 @Entity
 @Table(name = "enrollment")
