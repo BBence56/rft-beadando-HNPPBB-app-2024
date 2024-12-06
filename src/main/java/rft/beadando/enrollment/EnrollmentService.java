@@ -31,13 +31,9 @@ public class EnrollmentService {
         return enrollmentRepository.save(enrollment);
     }
 
-    public void deleteEnrollment(Student student, Course course) {
-        Enrollment.EnrollmentId id = new Enrollment.EnrollmentId((long) student.getId(), (long) course.getId());
-        if (enrollmentRepository.existsById(id)) {
-            enrollmentRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Enrollment not found for student ID: " + student.getId() +
-                    " and course ID: " + course.getId());
-        }
+    public void deleteEnrollment(Long studentId, Long courseId) {
+        Enrollment.EnrollmentId enrollmentId = new Enrollment.EnrollmentId(studentId, courseId);
+        enrollmentRepository.findById(enrollmentId).ifPresent(enrollmentRepository::delete);
     }
+
 }
