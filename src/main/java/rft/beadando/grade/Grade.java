@@ -2,24 +2,24 @@ package rft.beadando.grade;
 
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 import rft.beadando.course.Course;
 import rft.beadando.student.Student;
 
 @Entity
 @Table(name = "grade")
+@IdClass(GradeId.class)
 public class Grade {
-
     @Id
     @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
+    @JoinColumn(name = "student_id")
     private Student student;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "course_id", nullable = false)
+    @JoinColumn(name = "course_id")
     private Course course;
 
-    @Column(name = "grade", nullable = false)
     private int grade;
 
 
@@ -56,3 +56,4 @@ public class Grade {
         this.grade = grade;
     }
 }
+
