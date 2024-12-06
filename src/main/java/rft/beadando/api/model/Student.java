@@ -1,4 +1,5 @@
-package rft.beadando.teacher;
+package rft.beadando.api.model;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,8 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "teacher")
-public class Teacher {
+@Table(name = "student")
+public class Student {
+
     @Id
     @Column(name = "id", unique = true, nullable = false)
     private int id;
@@ -16,13 +18,14 @@ public class Teacher {
     @Column(name = "password")
     private String password;
 
-    public Teacher(int id,String name,String password) {
+
+    public Student(int id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
     }
 
-    public Teacher() {
+    public Student() {
     }
 
     public int getId() {

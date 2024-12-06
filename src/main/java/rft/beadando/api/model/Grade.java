@@ -1,9 +1,7 @@
-package rft.beadando.grade;
+package rft.beadando.api.model;
 
 
 import jakarta.persistence.*;
-import rft.beadando.course.Course;
-import rft.beadando.student.Student;
 
 @Entity
 @Table(name = "grade")
