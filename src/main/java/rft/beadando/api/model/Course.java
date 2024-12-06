@@ -1,7 +1,6 @@
-package rft.beadando.course;
+package rft.beadando.api.model;
 
 import jakarta.persistence.*;
-import rft.beadando.teacher.Teacher;
 
 @Entity
 @Table(name = "course")

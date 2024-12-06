@@ -1,4 +1,4 @@
-package rft.beadando.grade;
+package rft.beadando.api.model;
 
 import java.io.Serializable;
 import java.util.Objects;
