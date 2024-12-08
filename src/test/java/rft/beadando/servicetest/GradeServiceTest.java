@@ -1,4 +1,4 @@
-package rft.beadando;
+package rft.beadando.servicetest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
