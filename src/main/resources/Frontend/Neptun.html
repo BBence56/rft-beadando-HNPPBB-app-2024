@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neptun</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Neptun</h1>
+
+    <!-- Hallgatók -->
+    <div class="section">
+        <h2>Hallgatók</h2>
+        <button onclick="fetchStudents()">Hallgatók Lekérése</button>
+        <ul id="studentList"></ul>
+        <input type="number" id="studentIdAdd" placeholder="Hallgató ID">
+        <input type="text" id="studentNameAdd" placeholder="Hallgató Név">
+        <input type="text" id="studentPasswordAdd" placeholder="Hallgató Jelszó">
+        <button onclick="addStudent()">Hallgató Hozzáadása</button>
+    </div>
+
+    <!-- Tanárok -->
+    <div class="section">
+        <h2>Tanárok</h2>
+        <button onclick="fetchTeachers()">Tanárok Lekérése</button>
+        <ul id="teacherList"></ul>
+        <input type="number" id="teacherIdAdd" placeholder="Tanár ID">
+        <input type="text" id="teacherNameAdd" placeholder="Tanár Név">
+        <input type="text" id="teacherPasswordAdd" placeholder="Tanár Jelszó">
+        <button onclick="addTeacher()">Tanár Hozzáadása</button>
+    </div>
+
+    <!-- Kurzusok -->
+    <div class="section">
+        <h2>Kurzusok</h2>
+        <button onclick="fetchCourses()">Kurzusok Lekérése</button>
+        <ul id="courseList"></ul>
+        <input type="number" id="courseIdAdd" placeholder="Kurzus ID">
+        <input type="text" id="courseNameAdd" placeholder="Kurzus Név">
+        <input type="number" id="courseTeacherIdAdd" placeholder="Tanár ID">
+        <button onclick="addCourse()">Kurzus Hozzáadása</button>
+    </div>
+
+    <!-- Beiratkozások -->
+    <div class="section">
+        <h2>Beiratkozás</h2>
+        <button onclick="fetchEnrollments()">Beiratkozások Lekérése</button>
+        <ul id="enrollmentList"></ul>
+        <input type="number" id="enrollmentStudentId" placeholder="Hallgató ID">
+        <input type="number" id="enrollmentCourseId" placeholder="Kurzus ID">
+        <button onclick="enrollStudent()">Beiratkozás</button>
+        <button onclick="deleteEnrollment()">Beiratkozás Törlése</button>
+    </div>
+
+    <!-- Osztályzatok -->
+    <div class="section">
+        <h2>Osztályzatok</h2>
+        <input type="number" id="gradeStudentId" placeholder="Hallgató ID">
+        <input type="number" id="gradeCourseId" placeholder="Kurzus ID">
+        <button onclick="fetchGrade()">Osztályzat Lekérése</button>
+        <input type="number" id="newGrade" placeholder="Új Osztályzat">
+        <button onclick="updateGrade()">Osztályzat Módosítása</button>
+        <button onclick="deleteGrade()">Osztályzat Törlése</button>
+        <p id="gradeOutput"></p>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
