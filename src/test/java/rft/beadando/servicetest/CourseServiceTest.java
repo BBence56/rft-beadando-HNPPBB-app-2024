@@ -32,7 +32,7 @@ class CourseServiceTest {
 
     @Test
     void testFindAllCourses() {
-        Teacher teacher = new Teacher(1, "Teacher 1", "password");
+        Teacher teacher = new Teacher(1, "Teacher 1");
         Course course1 = new Course(1, "Course 1", teacher);
         Course course2 = new Course(2, "Course 2", teacher);
         List<Course> courses = Arrays.asList(course1, course2);
@@ -47,7 +47,7 @@ class CourseServiceTest {
 
     @Test
     void testFindCourseById() {
-        Teacher teacher = new Teacher(1, "Teacher 1", "password");
+        Teacher teacher = new Teacher(1, "Teacher 1");
         Course course = new Course(1, "Course 1", teacher);
 
         when(courseRepository.findById(1)).thenReturn(Optional.of(course));
@@ -59,7 +59,7 @@ class CourseServiceTest {
 
     @Test
     void testSaveCourse() {
-        Teacher teacher = new Teacher(1, "Teacher 1", "password");
+        Teacher teacher = new Teacher(1, "Teacher 1");
         Course course = new Course(1, "Course 1", teacher);
 
         when(courseRepository.save(course)).thenReturn(course);
@@ -70,7 +70,7 @@ class CourseServiceTest {
 
     @Test
     void testUpdateCourse() {
-        Teacher teacher = new Teacher(1, "Teacher 1", "password");
+        Teacher teacher = new Teacher(1, "Teacher 1");
         Course existingCourse = new Course(1, "Course 1", teacher);
         Course updatedCourse = new Course(1, "Updated Course", teacher);
 

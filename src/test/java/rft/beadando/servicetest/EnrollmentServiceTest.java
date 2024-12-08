@@ -34,10 +34,10 @@ class EnrollmentServiceTest {
 
     @Test
     void testFindAllEnrollments() {
-        Student student = new Student(1, "Student 1", "password");
-        Course course = new Course(1, "Course 1", new Teacher(1, "Teacher 1", "password"));
+        Student student = new Student(1, "Student 1");
+        Course course = new Course(1, "Course 1", new Teacher(1, "Teacher 1"));
         Enrollment enrollment1 = new Enrollment(student, course);
-        Enrollment enrollment2 = new Enrollment(student, new Course(2, "Course 2", new Teacher(2, "Teacher 2", "password")));
+        Enrollment enrollment2 = new Enrollment(student, new Course(2, "Course 2", new Teacher(2, "Teacher 2")));
         List<Enrollment> enrollments = Arrays.asList(enrollment1, enrollment2);
 
         when(enrollmentRepository.findAll()).thenReturn(enrollments);
@@ -50,8 +50,8 @@ class EnrollmentServiceTest {
 
     @Test
     void testSaveEnrollment() {
-        Student student = new Student(1, "Student 1", "password");
-        Course course = new Course(1, "Course 1", new Teacher(1, "Teacher 1", "password"));
+        Student student = new Student(1, "Student 1");
+        Course course = new Course(1, "Course 1", new Teacher(1, "Teacher 1"));
         Enrollment enrollment = new Enrollment(student, course);
 
         when(enrollmentRepository.save(enrollment)).thenReturn(enrollment);
@@ -62,8 +62,8 @@ class EnrollmentServiceTest {
 
     @Test
     void testDeleteEnrollment() {
-        Student student = new Student(1, "Student 1", "password");
-        Course course = new Course(1, "Course 1", new Teacher(1, "Teacher 1", "password"));
+        Student student = new Student(1, "Student 1");
+        Course course = new Course(1, "Course 1", new Teacher(1, "Teacher 1"));
         Enrollment.EnrollmentId enrollmentId = new Enrollment.EnrollmentId((long) student.getId(), (long) course.getId());
         Enrollment enrollment = new Enrollment(student, course);
 
