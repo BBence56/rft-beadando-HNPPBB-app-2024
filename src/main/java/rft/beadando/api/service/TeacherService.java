@@ -38,7 +38,6 @@ public class TeacherService {
         return teacherRepository.findById(id)
                 .map(teacher -> {
                     teacher.setName(updatedTeacher.getName());
-                    teacher.setPassword(updatedTeacher.getPassword());
                     return teacherRepository.save(teacher);
                 })
                 .orElseThrow(() -> new RuntimeException("Teacher not found with id: " + id));

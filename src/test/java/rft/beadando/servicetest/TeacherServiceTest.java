@@ -31,8 +31,8 @@ class TeacherServiceTest {
 
     @Test
     void testFindAllTeachers() {
-        Teacher teacher1 = new Teacher(1, "Teacher 1", "password1");
-        Teacher teacher2 = new Teacher(2, "Teacher 2", "password2");
+        Teacher teacher1 = new Teacher(1, "Teacher 1");
+        Teacher teacher2 = new Teacher(2, "Teacher 2");
         List<Teacher> teachers = Arrays.asList(teacher1, teacher2);
 
         when(teacherRepository.findAll()).thenReturn(teachers);
@@ -45,7 +45,7 @@ class TeacherServiceTest {
 
     @Test
     void testFindTeacherById() {
-        Teacher teacher = new Teacher(1, "Teacher 1", "password1");
+        Teacher teacher = new Teacher(1, "Teacher 1");
 
         when(teacherRepository.findById(1)).thenReturn(Optional.of(teacher));
 
@@ -56,7 +56,7 @@ class TeacherServiceTest {
 
     @Test
     void testSaveTeacher() {
-        Teacher teacher = new Teacher(1, "Teacher 1", "password1");
+        Teacher teacher = new Teacher(1, "Teacher 1");
 
         when(teacherRepository.save(teacher)).thenReturn(teacher);
 
@@ -66,8 +66,8 @@ class TeacherServiceTest {
 
     @Test
     void testUpdateTeacher() {
-        Teacher existingTeacher = new Teacher(1, "Teacher 1", "password1");
-        Teacher updatedTeacher = new Teacher(1, "Updated Teacher", "password1");
+        Teacher existingTeacher = new Teacher(1, "Teacher 1");
+        Teacher updatedTeacher = new Teacher(1, "Updated Teacher");
 
         when(teacherRepository.findById(1)).thenReturn(Optional.of(existingTeacher));
         when(teacherRepository.save(existingTeacher)).thenReturn(existingTeacher);

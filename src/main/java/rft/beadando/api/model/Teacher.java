@@ -13,13 +13,11 @@ public class Teacher {
     private int id;
     @Column(name = "name")
     private String name;
-    @Column(name = "password")
-    private String password;
 
-    public Teacher(int id,String name,String password) {
+
+    public Teacher(int id,String name) {
         this.id = id;
         this.name = name;
-        this.password = password;
     }
 
     public Teacher() {
@@ -41,11 +39,4 @@ public class Teacher {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

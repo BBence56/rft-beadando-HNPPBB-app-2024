@@ -31,8 +31,8 @@ class StudentServiceTest {
 
     @Test
     void testFindAllStudents() {
-        Student student1 = new Student(1, "Student 1", "password1");
-        Student student2 = new Student(2, "Student 2", "password2");
+        Student student1 = new Student(1, "Student 1");
+        Student student2 = new Student(2, "Student 2");
         List<Student> students = Arrays.asList(student1, student2);
 
         when(studentRepository.findAll()).thenReturn(students);
@@ -45,7 +45,7 @@ class StudentServiceTest {
 
     @Test
     void testFindStudentById() {
-        Student student = new Student(1, "Student 1", "password1");
+        Student student = new Student(1, "Student 1");
 
         when(studentRepository.findById(1)).thenReturn(Optional.of(student));
 
@@ -56,7 +56,7 @@ class StudentServiceTest {
 
     @Test
     void testSaveStudent() {
-        Student student = new Student(1, "Student 1", "password1");
+        Student student = new Student(1, "Student 1");
 
         when(studentRepository.save(student)).thenReturn(student);
 
@@ -66,8 +66,8 @@ class StudentServiceTest {
 
     @Test
     void testUpdateStudent() {
-        Student existingStudent = new Student(1, "Student 1", "password1");
-        Student updatedStudent = new Student(1, "Updated Student", "password1");
+        Student existingStudent = new Student(1, "Student 1");
+        Student updatedStudent = new Student(1, "Updated Student");
 
         when(studentRepository.findById(1)).thenReturn(Optional.of(existingStudent));
         when(studentRepository.save(existingStudent)).thenReturn(existingStudent);

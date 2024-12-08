@@ -38,7 +38,6 @@ public class StudentService {
         return studentRepository.findById(id)
                 .map(student -> {
                     student.setName(updatedStudent.getName());
-                    student.setPassword(updatedStudent.getPassword());
                     return studentRepository.save(student);
                 })
                 .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
