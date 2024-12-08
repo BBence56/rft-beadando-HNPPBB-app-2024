@@ -10,12 +10,12 @@ import java.util.Objects;
 public class Enrollment {
     @Id
     @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
+    @JoinColumn(name = "student_id", nullable = true)
     private Student student;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "course_id", nullable = false)
+    @JoinColumn(name = "course_id", nullable = true)
     private Course course;
 
     public Enrollment(Student student, Course course) {
