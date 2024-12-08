@@ -20,16 +20,22 @@ function fetchStudents() {
 function addStudent() {
     const id = document.getElementById('studentIdAdd').value;
     const name = document.getElementById('studentNameAdd').value;
-    const password = document.getElementById('studentPasswordAdd').value;
+
+    if (!name) {
+        alert('A név megadása kötelező!');
+        return;
+    }
 
     fetch(`${apiUrl}/students`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, name, password })
+        body: JSON.stringify({ id, name })
     })
         .then(() => alert('Hallgató hozzáadva!'))
         .catch(error => console.error('Hiba a hallgató hozzáadásakor:', error));
 }
+
+
 
 // Tanárok lekérése
 function fetchTeachers() {
@@ -51,16 +57,16 @@ function fetchTeachers() {
 function addTeacher() {
     const id = document.getElementById('teacherIdAdd').value;
     const name = document.getElementById('teacherNameAdd').value;
-    const password = document.getElementById('teacherPasswordAdd').value;
 
     fetch(`${apiUrl}/teachers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, name, password })
+        body: JSON.stringify({ id, name })
     })
         .then(() => alert('Tanár hozzáadva!'))
         .catch(error => console.error('Hiba a tanár hozzáadásakor:', error));
 }
+
 
 // Kurzusok lekérése
 function fetchCourses() {
@@ -84,14 +90,58 @@ function addCourse() {
     const name = document.getElementById('courseNameAdd').value;
     const teacherId = document.getElementById('courseTeacherIdAdd').value;
 
-    fetch(`${apiUrl}/courses`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, name, teacherId })
-    })
+    if (!name) {
+        alert('A kurzus nevének megadása kötelező!');
+        return;
+    }
+
+    if (!teacherId) {
+        alert('A tanár ID megadása kötelező!');
+        return;
+    }
+
+    fetch(`${apiUrl}/teachers/${teacherId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('A megadott tanár nem létezik!');
+            }
+            return fetch(`${apiUrl}/courses`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, name, teacherId })
+            });
+        })
         .then(() => alert('Kurzus hozzáadva!'))
         .catch(error => console.error('Hiba a kurzus hozzáadásakor:', error));
 }
+//Beiratkozás hozzáadása
+function addEnrollment() {
+    const studentId = document.getElementById('enrollmentStudentId').value;
+    const courseId = document.getElementById('enrollmentCourseId').value;
+
+    if (!studentId || !courseId) {
+        alert('A hallgató és a kurzus ID-k megadása kötelező!');
+        return;
+    }
+
+    Promise.all([
+        fetch(`${apiUrl}/students/${studentId}`),
+        fetch(`${apiUrl}/courses/${courseId}`)
+    ])
+        .then(([studentRes, courseRes]) => {
+            if (!studentRes.ok || !courseRes.ok) {
+                throw new Error('A hallgató vagy kurzus nem létezik!');
+            }
+            return fetch(`${apiUrl}/enrollments`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ studentId, courseId })
+            });
+        })
+        .then(() => alert('Beiratkozás sikeres!'))
+        .catch(error => console.error('Hiba a beiratkozás során:', error));
+}
+
 
 // Beiratkozások lekérése
 function fetchEnrollments() {
@@ -120,5 +170,32 @@ function deleteEnrollment() {
         .then(() => alert('Beiratkozás törölve!'))
         .catch(error => console.error('Hiba a beiratkozás törlésekor:', error));
 }
+//Jegy hozzáadása
+function updateGrade() {
+    const studentId = document.getElementById('gradeStudentId').value;
+    const courseId = document.getElementById('gradeCourseId').value;
+    const gradeValue = document.getElementById('newGrade').value;
 
-// Osztályzat frissítése/törlése ugyanúgy működik, ahogy fentebb szerepeltek.
+    if (!studentId || !courseId || !gradeValue) {
+        alert('Minden mező kitöltése kötelező!');
+        return;
+    }
+
+    Promise.all([
+        fetch(`${apiUrl}/students/${studentId}`),
+        fetch(`${apiUrl}/courses/${courseId}`)
+    ])
+        .then(([studentRes, courseRes]) => {
+            if (!studentRes.ok || !courseRes.ok) {
+                throw new Error('A hallgató vagy kurzus nem létezik!');
+            }
+            return fetch(`${apiUrl}/grades`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ studentId, courseId, grade: gradeValue })
+            });
+        })
+        .then(() => alert('Osztályzat frissítve!'))
+        .catch(error => console.error('Hiba az osztályzat frissítésekor:', error));
+}
+
